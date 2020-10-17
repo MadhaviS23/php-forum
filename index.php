@@ -42,7 +42,7 @@
 <!-- category container starts -->
 
 <div class="container my-4">
-    <h2 class="text-center my-3"> WeDiscuss- Browse Categories</h2>
+    <h2 class="text-center my-3"> WeDiscuss-All Categories</h2>
 
     <!-- cards -->
     <div class="row my-5">
