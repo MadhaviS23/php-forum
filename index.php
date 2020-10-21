@@ -12,8 +12,9 @@
 
     <title>WeDiscuss</title>
 </head>
-<?php include 'partials/header.php'; ?>
 <?php include 'partials/dbconnect.php'; ?>
+<?php include 'partials/header.php'; ?>
+
 
 <!-- Carousel / slider -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -42,7 +43,7 @@
 <!-- category container starts -->
 
 <div class="container my-4">
-    <h2 class="text-center my-3"> WeDiscuss-All Categories</h2>
+    <h2 class="text-center my-3"> WeDiscuss-Top Categories</h2>
 
     <!-- cards -->
     <div class="row my-5">
@@ -50,7 +51,7 @@
       <!-- fetch categories from database -->
         <?php
         
-          $sql = "SELECT * FROM `categories`";
+          $sql = "SELECT * FROM `categories` LIMIT 6";
           $result = mysqli_query($conn, $sql);
           //using a while loop to iterate through categories
           while($row =  mysqli_fetch_assoc($result)){

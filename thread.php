@@ -19,11 +19,12 @@
 <?php
 $id = $_GET['threadid'];
 $userid = $_SESSION['user_id'];
-var_dump($userid);
 $showAlert= false;
 $method = $_SERVER['REQUEST_METHOD'];
 if($method=='POST'){
     $content= $_POST['comment'];
+    $content= str_replace("<","&lt;", $content);
+    $content= str_replace(">","&gt;", $content);
     $sql = "INSERT INTO `comments` (`com_id`, `com_content`, `thread_id`, `user_id`, `timestamp`)
              VALUES ('NULL', '$content ', '$id', '$userid', CURRENT_TIMESTAMP)";
     $result = mysqli_query($conn, $sql);

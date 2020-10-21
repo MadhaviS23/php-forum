@@ -12,9 +12,9 @@
 
     <title>WeDiscuss</title>
 </head>
-
-<?php include 'partials/header.php'; ?>
 <?php include 'partials/dbconnect.php'; ?>
+<?php include 'partials/header.php'; ?>
+
 <?php
         $id = $_GET['cat_id'];         
           $sql = "SELECT * FROM `categories` WHERE cat_id=$id";
@@ -34,7 +34,12 @@ $method = $_SERVER['REQUEST_METHOD'];
 echo(var_dump($method));
 if($method=='POST'){
     $th_title= $_POST['title'];
+    $th_title= str_replace("<","&lt;",$th_title);
+    $th_title= str_replace(">","&gt;",$th_title);
     $th_desc= $_POST['desc'];
+    $th_desc= str_replace("<","&lt;",$th_desc);
+    $th_desc= str_replace(">","&gt;",$th_desc);
+
     $sql = "INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_des`, `thread_cat_id`, 
     `thread_user_id`, `timestamp`) VALUES (NULL, '$th_title','$th_desc', '$id', '$userid', CURRENT_TIMESTAMP)";
     $result = mysqli_query($conn, $sql);
